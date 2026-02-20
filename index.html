@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoArmenia VIP Platform</title>
+    <title>TITAN Crypto Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
  
 <script>
-  const correctCode = "cccrrr"; 
-  let userCode;
-
-  // Թաքցնում ենք ամբողջ կայքը
   document.documentElement.style.display = "none";
 
-  while (true) {
-    userCode = prompt("Մուտքագրիր գաղտնի կոդը:");
+  fetch("config.json")
+    .then(response => response.json())
+    .then(data => {
+      const correctCode = data.lalala;
 
-    if (userCode === correctCode) {
-      document.documentElement.style.display = "block";
-      break;
-    } else {
-      alert("Սխալ կոդ, փորձիր նորից!");
-    }
-  }
+      while (true) {
+        let userCode = prompt("Մուտքագրիր գաղտնի կոդը:");
+
+        if (userCode === correctCode) {
+          document.documentElement.style.display = "block";
+          break;
+        } else {
+          alert("Սխալ կոդ, փորձիր նորից!");
+        }
+      }
+    })
+    .catch(() => {
+      alert("Չհաջողվեց բեռնել config.json");
+    });
 </script>
 
 
@@ -464,7 +469,4 @@ window.smartsupp||(function(d) {
 <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
 
 </body>
-
 </html>
-
-
